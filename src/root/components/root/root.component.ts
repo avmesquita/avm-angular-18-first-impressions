@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { MessagesComponent } from '../messages/messages.component';
+
 import {
   MatBottomSheet,
   MatBottomSheetModule,
@@ -24,6 +24,7 @@ import {
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
+import { MessagesComponent } from '../standalone/messages/messages.component';
 
 @Component({
   selector: 'app-root',
@@ -41,10 +42,10 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatBottomSheetModule,
     MatTooltipModule
   ],
-  templateUrl: './main.component.html',
-  styleUrl: './main.component.scss'
+  templateUrl: './root.component.html',
+  styleUrl: './root.component.scss'
 })
-export class MainComponent {
+export class RootComponent {
   title = 'avm-angular-18-first-impressions';
 
   readonly dialog = inject(MatDialog);
