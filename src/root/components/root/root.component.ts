@@ -25,6 +25,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { MessagesComponent } from '../standalone/messages/messages.component';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'app-root',
@@ -43,20 +44,28 @@ import { MessagesComponent } from '../standalone/messages/messages.component';
     MatTooltipModule
   ],
   templateUrl: './root.component.html',
-  styleUrl: './root.component.scss'
+  styleUrl: './root.component.scss',
+  providers: [
+    MenuService
+  ]
 })
 export class RootComponent {
   title = 'avm-angular-18-first-impressions';
 
   readonly dialog = inject(MatDialog);
 
+  readonly menuService = inject(MenuService);
+  public readonly menuItens = this.menuService.items;
+
   horizontalPosition: MatSnackBarHorizontalPosition = 'right';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
   durationInSeconds = 3;
-
+  
   constructor(private _bottomSheet: MatBottomSheet,
-              private _snackBar: MatSnackBar) {}
+              private _snackBar: MatSnackBar) {    
+
+  }
 
   openMessages() {
     let dialogRef = this.dialog.open(MessagesComponent, {
